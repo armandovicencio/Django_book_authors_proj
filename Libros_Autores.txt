@@ -1,0 +1,137 @@
+In [3]: from books_authors_app.models import *
+
+In [5]: Book.objects.create(title="C")
+Out[5]: <Book: Book object (2)>
+
+In [6]: Book.objects.create(title="Sharp")
+Out[6]: <Book: Book object (3)>
+
+In [7]: Book.objects.create(title="Java")
+Out[7]: <Book: Book object (4)>
+
+In [8]: Book.objects.create(title="Python")
+Out[8]: <Book: Book object (5)>
+
+In [9]: Book.objects.create(title="PHP")
+Out[9]: <Book: Book object (6)>
+
+In [10]: Book.objects.create(title="Ruby")
+Out[10]: <Book: Book object (7)>
+
+In [11]: Author.objects.create(first_name="Jean", last_name="Austen")
+Out[11]: <Author: Author object (1)>
+
+In [12]: Author.objects.create(first_name="Emily", last_name="Dickinson")
+Out[12]: <Author: Author object (2)>
+
+In [13]: Author.objects.create(first_name="Fyodor", last_name="Dostoevksy")
+Out[13]: <Author: Author object (3)>
+
+In [14]: Author.objects.create(first_name="William", last_name=" Shakespeare")
+Out[14]: <Author: Author object (4)>
+
+In [15]: Author.objects.create(first_name="Lau", last_name="Tzu")
+Out[15]: <Author: Author object (5)>
+
+
+c = Book.objects.get(id=1)
+
+In [23]: c.title = "C#"
+
+In [24]: c.save()
+
+In [25]: a= Author.objects.get(id=4)
+
+In [26]: a.first_name="Bill"
+
+In [27]: a.save()
+
+
+[5]: book1 = Book.objects.get(id=1)
+
+In [6]: book2 = Book.objects.get(id=2)
+
+In [7]: book3 = Book.objects.get(id=3)
+
+In [8]: Author1 = Author.objects.get(id=1)
+
+In [9]: book1.authors.add(Author1)
+
+In [10]: book2.authors.add(Author1)
+
+In [11]: Author2 = Author.objects.get(id=2)
+
+In [12]: book1.authors.add(Author2)
+
+In [13]: book2.authors.add(Author2)
+
+In [14]: book3.authors.add(Author2)
+
+In [15]: Author3 = Author.objects.get(id=3)
+
+In [16]: book1.authors.add(Author2)
+
+In [17]: Author3 = Author.objects.get(id=3)
+
+In [18]: book1.authors.add(Author3)
+
+In [19]: book2.authors.add(Author3)
+
+In [20]: book3.authors.add(Author3)
+
+In [21]: book4= Book.objects.get(id=5)
+
+In [22]: book4.authors.add(Author3)
+
+In [23]: c = Book.objects.all()
+
+
+
+
+In [26]: from books_authors_app.models import *
+
+In [27]: Author4 = Author.objects.get(id=4)
+
+In [28]: c = Book.objects.all()
+
+In [29]: c.Author.add(Author4)
+
+
+In [30]: c.authors.add(Author4)
+
+
+In [31]: book4.authors.add(Author4)
+
+In [32]: book3.authors.add(Author3)
+
+In [33]: book3.authors.add(Author4)
+
+In [34]: book2.authors.add(Author4)
+
+In [35]: book1.authors.add(Author4)
+
+In [36]: book5.authors.add(Author4)
+
+
+In [37]: book5= Book.objects.get(id=5)
+
+In [38]: book5.authors.add(Author4)
+
+
+In [39]: Author.objects.filter(books=book3)
+Out[39]: <QuerySet [<Author: Author object (2)>, <Author: Author object (3)>, <Author: Author object 
+(4)>]>
+
+In [40]: book3= Book.objects.get(id=4)
+
+In [41]: primer_author=Author.objects.get(id=1)
+
+In [42]: book3.authors.remove(primer_author)
+
+In [45]:  Book.objects.filter(authors=3)
+Out[45]: <QuerySet [<Book: Book object (2)>, <Book: Book object (3)>, <Book: Book object (4)>, <Book:
+ Book object (5)>]>
+
+In [46]: Author.objects.filter(books=book5)
+Out[46]: <QuerySet [<Author: Author object (4)>]>
+
