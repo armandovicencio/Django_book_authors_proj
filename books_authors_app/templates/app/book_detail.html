@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book detail</title>
+</head>
+<body>
+<h2>{{ book.title }}</h2>
+<h3>ID: {{ book.id }}</h3>
+<h3>Descripcion</h3>
+{{ book.desc }}
+
+<h4>Agregar Autores atraves de : http://127.0.0.1:8000/authors</h4>
+<ul>
+<h3>Autores</h3>
+    {% for author in authors %}
+        <li>{{ author.first_name }} {{ author.last_name }}</li>
+    {% endfor %}
+</ul>
+</body>
+</html>

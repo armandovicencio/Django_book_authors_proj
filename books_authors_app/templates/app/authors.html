@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Agregar Autor</h2>
+<form action="{% url 'add_author' %}" method="post">
+    {% csrf_token %}
+
+    <label for="first_name">Nombre</label><br>
+    <input type="text" id="first_name" name="first_name"><br>
+
+    <label for="last_name">Apellido</label><br>
+    <input type="text" id="last_name" name="last_name"><br>
+
+    <label for="notes">Notas</label><br>
+    <input type="text" id="notes" name="notes"><br>
+
+    <input type="submit" value="Submit">
+</form>
+
+{% if authors %}
+    <table style="width:40%">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Action</th>
+        </tr>
+        {% for author in authors %}
+            <tr>
+                <td>{{ author.id }}</td>
+                <td>{{ author.first_name }} {{ author.last_name }}</td>
+                <td><a href="{% url 'author_detail' author.id %}">Detalle</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+
+
+</body>
+</html>

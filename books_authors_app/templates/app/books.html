@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Agregar un Libro</h2>
+<form action="{% url 'add_book' %}" method="post">
+    {% csrf_token %}
+
+    <label for="title">Titulo</label><br>
+    <input type="text" id="title" name="title"><br>
+    <label for="description">Descripcion</label><br>
+    <input type="text" id="description" name="description"><br>
+    <input type="submit" value="Agregar">
+</form>
+
+{% if books %}
+    <table style="width:30%">
+        <tr>
+            <th>ID</th>
+            <th>Titulo</th>
+            <th>Action</th>
+        </tr>
+        {% for book in books %}
+            <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.title }}</td>
+                <td><a href="{% url 'book_detail' book.id %}">Detalle</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+
+</body>
+</html>
